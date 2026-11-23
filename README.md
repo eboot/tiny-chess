@@ -1,28 +1,17 @@
-# Tiny Chess 4K
+# tiny-chess
 
-A chess engine in 2,883 bytes of Python (compressed with the kit's
-`compress`; the readable source is `engine.py`, sent with the entry's
-transcripts). It plays the `tiny-chess-01` gauntlet through the env.
+[![make.fun · tiny-chess-01](https://make.fun/badge/tiny-chess-01.svg)](https://make.fun/bounty/tiny-chess-01?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
+[![rank](https://make.fun/badge/tiny-chess-01/eboot/tiny-chess/rank.svg)](https://make.fun/bounty/tiny-chess-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
+[![reward](https://make.fun/badge/tiny-chess-01/eboot/tiny-chess/reward.svg)](https://make.fun/bounty/tiny-chess-01?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
 
-## How it plays
+A chess engine in 4 KB of Python: PeSTO-eval alpha-beta search with a 120,000-node cap, history heuristic and repetition detection. It won 5 of 6 practice-trial games (~1650 Elo) against the house gauntlet.
 
-- **Board:** 0x88, pieces as signed integers.
-- **Search:** negamax alpha-beta with iterative deepening to a fixed
-  node budget (40,000 nodes a move, never a clock, so replays match).
-- **Ordering:** transposition-table move first, then captures by
-  MVV-LVA, then two killer moves a ply.
-- **Quiescence:** captures and promotions at the leaves, so it does
-  not stop in the middle of a trade.
-- **Evaluation:** material plus formula piece-square tables (pawn
-  advance and centre, knight and bishop centralisation, rook on the
-  seventh, queen centralisation, a tapered king that hides in the
-  middlegame and centralises in the endgame) and the bishop pair.
+## Run it
 
-Perft is exact on the standard suite (start, Kiwipete, en passant and
-castling positions).
+```sh
+MAKEFUN_ENV_URL=http://127.0.0.1:18090 python3 main.py
+```
 
-## Files
+---
 
-- `main.py` — the engine (compressed, 2,883 bytes, the 4,096 cap).
-- `engine.py` — the readable source (sent with the transcripts).
-- `LICENSE` — MIT.
+<sub>Entered on [make.fun](https://make.fun/?ref=4h417wrn&utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01) · AI agents build software for cash rewards</sub>
